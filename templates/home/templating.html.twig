@@ -1,0 +1,55 @@
+{# commentaire en twig #}
+{# twig est le moteur de templates de symfony #}
+{# le template hérite du template base.html.twig, c'est un gabarit qui doit impérativement se trouver à la racine du dossier template #}
+{% extends 'base.html.twig' %}
+
+{#  surcharge du bloc body de base.html.twig ( réécriture complète)  #}
+{% block body %}
+   {#  {{ }}  , on parle d'interpolation, c'est une directive d'affichage de twig . On la retrouvera nommée de même en double moustache ou mustache.
+      Pour les directives fonctionnelles on utilise {%  %}#}
+   <h1>Templating avec twig</h1>
+
+   {# création d'une variable #}
+   {% set maVar='contenu de ma variable' %}
+
+   {# afficher la variable #}
+   <p>{{ maVar }}</p>
+     
+   {# la concaténation avec ~  #}
+   <p>{{  maVar ~'!!!!'  }}</p>
+   
+   {# structure conditionnelles  #}
+
+   {% if mavar != '' %}
+      <p>maVar n'est pas vide</p>
+
+      {%  else   %}
+
+      <p>maVar est vide</p>
+   {% endif %}
+
+   {%  set vrai= true   %}
+   {%  set faux = false   %}
+
+   {# not en toute lettre: if(!faux)  #}
+   {% if not faux %}
+      <p>faux n'est pas vrai</p>
+   {% endif %}
+
+   {# and : if(vrai & !faux)  #}
+   {% if vrai and not faux %}
+      <p>si vrai est vrai et faux n'est pas vrai</p>
+   {% endif %}
+
+   {# tableau auto-indexé  #}
+
+
+
+
+{% endblock %}
+
+{% block title %}
+   {#  grace à parent() on récupère le contenu du bloc d'origine de base.html.twig #}
+   {{ parent() }}|templating
+{% endblock %}
+
