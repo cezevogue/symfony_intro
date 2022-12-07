@@ -23,7 +23,7 @@ class HomeController extends AbstractController
                
                
                 return $this->render('home/templating.html.twig', [
-                  
+                  'demain'=>new \DateTime('+1day')
                 ]);
             }
     
